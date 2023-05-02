@@ -1,3 +1,6 @@
+// getReal({real: 2, img: 3}) ==> 3;
+// getReal([2,3i]) ==> 3;
+
 const getReal = function(complexNumber) {
   return complexNumber.real;
 };
@@ -12,11 +15,12 @@ const add = function(firstNumber, secondNumber) {
   return {real, img};
 }
 
-// getReal({real: 2, img: 3}) ==> 3;
-// getReal([2,3i]) ==> 3;
-
+const display = function(complexNumber) {
+  console.log(`${complexNumber.real} + ${complexNumber.img}i`);
+};
 
 exports.getReal = getReal;
 exports.getImg = getImg;
 exports.add = add;
+exports.display = display;
 
