@@ -1,6 +1,6 @@
 const {it, describe} = require("node:test");
-const {strictEqual} = require("assert");
-const {getReal, getImg} = require("../src/complex-number.js");
+const {strictEqual, deepStrictEqual } = require("assert");
+const {getReal, getImg, add} = require("../src/complex-number.js");
 
 console.log(getReal);
 
@@ -32,3 +32,9 @@ describe("get the imiginary part", function() {
   });
 });
 
+describe("sum of complex number.", function() {  
+  it("should return 3", function() {
+    deepStrictEqual(add({real: 2, img: 1}, {real: 3, img: 4}), {real: 5, img: 5});
+  });
+
+});
