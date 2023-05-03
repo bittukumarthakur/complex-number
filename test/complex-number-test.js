@@ -1,49 +1,84 @@
 const {it, describe} = require("node:test");
 const {strictEqual, deepStrictEqual } = require("assert");
-const {getReal, getImaginary, add, display} = require("../src/complex-number.js");
+const {complexNumber, display} = require("../src/complex-number.js");
 
-describe("get the real part", function() {  
-  it("should return 2", function() {
-    strictEqual(getReal({real: 2, imaginary: 3}), 2);
+describe("complex number", function() {   
+  describe("get the real part", function() {  
+    it("should return real part, which is 2.", function() {
+      const a = complexNumber(2, 3);
+      strictEqual(a.real(), 2);
+    });
+
+    it("should return real part, which is -4.", function() {
+      const b = complexNumber(-4, 1);
+      strictEqual(b.real(), -4);
+    });
   });
 
-  it("should return 4", function() {
-    strictEqual(getReal({real: 4, imaginary: 1}), 4);
+  describe("get the imiginary part", function() {  
+    it("should return imaginary part, which is 1.", function() {
+      const a = complexNumber(-4, 1);
+      strictEqual(a.imaginary(), 1);
+    });
+
+    it("should return imaginary part, which is -2.", function() {
+      const b = complexNumber(1, -2);
+      strictEqual(b.imaginary(), -2);
+    });
   });
 
-  it("should return 20", function() {
-    strictEqual(getReal({real: 20, imaginary: 4}), 20);
+  describe("sum of complex number.", function() {  
+    it("should return complex number, in which real and imaginary are positive.", function() {
+      const a = complexNumber(1, 2);
+      const b = complexNumber(3, 4);
+
+      const c = a.add(b);
+
+      strictEqual(c.real(), 4);
+      strictEqual(c.imaginary(), 6);
+    });
+
+    it("should return complex number, in which real part are negative.", function() {
+      const a = complexNumber(1, 2);
+      const b = complexNumber(-4, 4);
+
+      const c = a.add(b);
+
+      strictEqual(c.real(), -3);
+      strictEqual(c.imaginary(), 6);
+    });
+
+    it("should return complex number, in which imaginary part are negative.", function() {
+      const a = complexNumber(1, 2);
+      const b = complexNumber(4, -4);
+
+      const c = a.add(b);
+
+      strictEqual(c.real(), 5);
+      strictEqual(c.imaginary(), -2);
+    });
+
+    it("should return complex number, in which real and imaginary are negative.", function() {
+      const a = complexNumber(1, -5);
+      const b = complexNumber(-4, 1);
+
+      const c = a.add(b);
+
+      strictEqual(c.real(), -3);
+      strictEqual(c.imaginary(), -4);
+    });
   });
+
+  describe("multiplication of complex number.", function() {  
+    it("should return a complex number.", function() {
+      const a = complexNumber(1, 2);
+      const b = complexNumber(3, 4);
+
+      const c = a.multiply(b); 
+
+      strictEqual(c.real(), -5);
+      strictEqual(c.imaginary(), 10);
+    });
+  });
+
 });
-
-describe("get the imiginary part", function() {  
-  it("should return 3", function() {
-    strictEqual(getImaginary({real: 2, imaginary: 3}), 3);
-  });
-
-  it("should return 1", function() {
-    strictEqual(getImaginary({real: 4, imaginary: 1}), 1);
-  });
-
-  it("should return 10", function() {
-    strictEqual(getImaginary({real: 20, imaginary: 10}), 10);
-  });
-});
-
-describe("sum of complex number.", function() {  
-  it("should contain all +ve number.", function() {
-    deepStrictEqual(add({real: 2, imaginary: 1}, {real: 3, imaginary: 4}), {real: 5, imaginary: 5});
-  });
-
-  it("should contain all -ve number.", function() {
-    deepStrictEqual(add({real:-2 , imaginary: -3}, {real: -3, imaginary: -4}), {real: -5, imaginary: -7});
-  });
-
-  it("should contain both +ve and -ve number.", function() {
-    deepStrictEqual(add({real:2 , imaginary: -3}, {real: -3, imaginary: 4}), {real: -1, imaginary: 1});
-  });
-
-});
-
-display({real: 1,imaginary: 2})
-
