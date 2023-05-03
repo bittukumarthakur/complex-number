@@ -14,11 +14,11 @@ const complexNumber = function(realNumber, imaginaryNumber) {
     return complexNumber(real, imaginary);
   };
 
-  const multiply = function(multiplicand) {
+  const multiply = function(number) {
     const real1 = realNumber;
     const imaginary1 = imaginaryNumber;
-    const real2 = multiplicand.real();
-    const imaginary2 = multiplicand.imaginary();
+    const real2 = number.real();
+    const imaginary2 = number.imaginary();
 
     const real = (real1 * real2) + (imaginary1 * imaginary2 * -1);
     const imaginary = (real1 * imaginary2) + (imaginary1 * real2);

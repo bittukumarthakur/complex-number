@@ -70,7 +70,7 @@ describe("complex number", function() {
   });
 
   describe("multiplication of complex number.", function() {  
-    it("should return a complex number.", function() {
+    it("should multiply complex number, in which real and imaginary parts are positive.", function() {
       const a = complexNumber(1, 2);
       const b = complexNumber(3, 4);
 
@@ -79,6 +79,16 @@ describe("complex number", function() {
       strictEqual(c.real(), -5);
       strictEqual(c.imaginary(), 10);
     });
+
+    it("should multiply complex number, in which real and imaginary are both +ve and -ve.", function() {
+      const a = complexNumber(-1, 2);
+      const b = complexNumber(3, -4);
+
+      const c = a.multiply(b); 
+
+      strictEqual(c.real(), 5);
+      strictEqual(c.imaginary(), 10);
+    });
   });
 
-});
+})
